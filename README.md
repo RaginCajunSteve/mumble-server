@@ -1,4 +1,4 @@
-﻿# Mumble Server (Murmur) for alphamirror.trade
+﻿# Mumble Server (Murmur) for lightningcomms.net
 
 This repository contains the configuration to run a self-hosted [Mumble](https://www.mumble.info/) voice server (Murmur) using Docker.
 
@@ -15,7 +15,7 @@ The server will be available on UDP/TCP port **64738**.
 
 ### 2. Connect with Mumble client
 - Download client from https://www.mumble.info/
-- Server: `mumble.alphamirror.trade:64738` (or your server's IP/hostname)
+- Server: `mumble.lightningcomms.net:64738` (or your server's IP/hostname)
 - Default superuser: `SuperUser` / password from `MUMBLE_SUPERUSER_PASSWORD` in compose (change it!)
 
 ### 3. Configure
@@ -30,7 +30,7 @@ Add an **A** (or AAAA) record in Cloudflare for your domain:
 - Content: Your server's public IP
 - Proxy status: **DNS only** (grey cloud) — required for UDP voice traffic.
 
-Example: `mumble.alphamirror.trade` → `your.vps.ip`
+Example: `mumble.lightningcomms.net` → `your.vps.ip`
 
 ### Recommended: Use Cloudflare Tunnel (zero-trust, no open ports)
 If you want to avoid opening ports on your host:
@@ -45,7 +45,7 @@ tunnel: your-tunnel-id
 credentials-file: /path/to/credentials.json
 
 ingress:
-  - hostname: mumble.alphamirror.trade
+  - hostname: mumble.lightningcomms.net
     service: udp://localhost:64738
   - service: http_status:404
 ```
