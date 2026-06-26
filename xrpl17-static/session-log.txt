@@ -1,0 +1,48 @@
+GROK SESSION LOG - MUMBLE SERVER SETUP
+Date: 2026-06-26 (approx, based on conversation)
+Domain: xrpl17.lightningcomms.net (hosted via Cloudflare Pages from xrpl17-static/)
+VPS: 98.183.227.178 (mumble.lightningcomms.net)
+
+=== SESSION SUMMARY ===
+This file contains a saved record of the Grok conversation for setting up the Mumble (Murmur) voice server.
+
+Key topics covered:
+- Initial Mumble Docker setup (docker-compose.yml, murmur.ini)
+- GitHub repo: https://github.com/RaginCajunSteve/mumble-server
+- Pushing local files to xrpl17-static/ for Cloudflare Pages hosting of alphamirror-like static site
+- DNS setup for mumble.lightningcomms.net (A to 98.183.227.178, grey cloud)
+- Cloudflare Tunnel for UDP forwarding (cloudflared-config.yml) to avoid opening ports on VPS
+- SSH access to VPS (golduser@98.183.227.178, key xrpl17-admin)
+- Certificate setup using Cloudflare Origin CA for TLS
+- Security best practices: serverpassword, certrequired, allowhtml=false, autobans, etc.
+- Troubleshooting SSH key auth (adding public key to authorized_keys)
+- Client connection issues for Mumble
+- Architecture: Mumble on VPS, static site on CF Pages, DNS/Tunnel on CF
+
+=== KEY FILES IN REPO ===
+- docker-compose.yml (updated with security, cert mount)
+- config/murmur.ini (TLS, security settings)
+- cloudflared-config.yml (UDP tunnel config)
+- xrpl17-static/ (static site files for Pages)
+- README.md, SECURITY.md, OPERATIONS.md (updated docs)
+- certs/ (for certificates)
+- .env.example
+
+=== IMPORTANT COMMANDS ===
+- SSH: ssh -i "C:\Users\steve\.ssh\xrpl17-admin" golduser@98.183.227.178
+- Deploy Mumble: docker compose up -d
+- Set SuperUser password: docker compose exec murmur murmurd -ini /config/murmur.ini -supw 'password'
+- For tunnel: Install cloudflared on VPS, run with config or token
+- Git: git pull on VPS to update config
+
+=== NOTES ===
+- Mumble server runs on VPS (not Cloudflare)
+- xrpl17 is static via Pages
+- To add files to site: add to xrpl17-static/ in repo, push to GitHub, Pages deploys
+- Full session history is very long; this is a summarized log for reference.
+- For full history, refer to local Grok session files or chat export.
+
+This file is hosted at: https://xrpl17.lightningcomms.net/session-log.txt
+(After deployment)
+
+--- END OF SAVED SESSION LOG ---
