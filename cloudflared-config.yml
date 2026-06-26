@@ -1,0 +1,10 @@
+﻿# Sample cloudflared config for Mumble on lightningcomms.net
+# Run with: cloudflared tunnel --config cloudflared-config.yml run
+
+tunnel: your-tunnel-id-here
+credentials-file: /path/to/your-tunnel-credentials.json
+
+ingress:
+  - hostname: mumble.lightningcomms.net
+    service: udp://localhost:64738
+  - service: http_status:404

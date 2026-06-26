@@ -1,0 +1,18 @@
+﻿name: Deploy Mumble to Host (example)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push image
+        run: |
+          docker build -t ghcr.io/ragincajunsteve/mumble-server:latest .
+          docker push ghcr.io/ragincajunsteve/mumble-server:latest
+      # Add steps for SSH deploy to your host or other
+      # e.g. using appleboy/ssh-action to pull and restart on VPS
