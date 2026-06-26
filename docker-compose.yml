@@ -1,0 +1,19 @@
+﻿version: "3.8"
+
+services:
+  murmur:
+    image: mumblevoip/mumble-server:latest
+    container_name: mumble-server
+    restart: unless-stopped
+    ports:
+      - "64738:64738/tcp"
+      - "64738:64738/udp"
+    volumes:
+      - ./data:/data
+      - ./config:/config
+    environment:
+      - TZ=UTC
+      # Set a strong superuser password here or in murmur.ini
+      - MUMBLE_SUPERUSER_PASSWORD=ChangeThisSuperUserPassword123!
+    # Uncomment to use a custom config file (recommended)
+    # command: ["murmurd", "-fg", "-ini", "/config/murmur.ini"]
